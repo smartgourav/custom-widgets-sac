@@ -9,9 +9,11 @@
             this.init();
         }
 
-        init() {
-            this._shadowRoot = this.attachShadow({ mode: "open" });
-            this._shadowRoot.appendChild(template.content.cloneNode(true));
+        init(fromRangeSelection) {
+            if (!fromRangeSelection) {
+                this._shadowRoot = this.attachShadow({ mode: "open" });
+                this._shadowRoot.appendChild(template.content.cloneNode(true));
+            }
 
             var ctor = sap.m.DatePicker;
             if (this._enableRange) { ctor = sap.m.DateRangeSelection; }
@@ -95,17 +97,7 @@
             if (value == undefined || !this.DP) return;
             this._enableRange = value;
             this.DP.destroy();
-            if (this._enableRange) {
-                var ctor = sap.m.DateRangeSelection;
-                this.DP = new ctor({
-                    change: function () {
-                        this.fireChanged();
-                        this.dispatchEvent(new Event("onChange"));
-                    }.bind(this)
-                })
-
-                this.DP.placeAt(this._shadowRoot);
-            }
+            this.init(true)
         }
 
         set minDate(date) {
