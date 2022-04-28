@@ -32,7 +32,7 @@
             if (this._maxDate) {
                 this.updateMaxDate();
             }
-            this.DP.placeAt(this);
+            this.DP.placeAt(this._shadowRoot);
         }
 
         /*onCustomWidgetAfterUpdate(changedProperties) {

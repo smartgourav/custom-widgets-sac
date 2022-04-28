@@ -35,7 +35,7 @@
                     this._submit(event);
                 }.bind(this)
             });
-            this.minDP.placeAt(this._shadowRoot.querySelector("#dateMin"));
+            this.minDP.placeAt(this._shadowRoot.getElementById("dateMin"));
 
             if (sap.ui.getCore().byId("dateMax")) {
                 sap.ui.getCore().byId("dateMax").destroy();
@@ -47,9 +47,9 @@
                     this._submit(event);
                 }.bind(this)
             });
-            this.maxDP.placeAt(this._shadowRoot.querySelector("#dateMax"));
+            this.maxDP.placeAt(this._shadowRoot.getElementById("dateMax"));
             ["select", "theme", "range"].forEach(id =>
-                this._shadowRoot.querySelector("#" + id).addEventListener("change", this._submit.bind(this)));
+                this._shadowRoot.getElementById(id).addEventListener("change", this._submit.bind(this)));
         }
 
         _submit(e) {
@@ -77,19 +77,19 @@
         }
 
         get darkTheme() {
-            return this._shadowRoot.querySelector("#theme").checked;
+            return this._shadowRoot.getElementById("theme").checked;
         }
 
         set darkTheme(value) {
-            this._shadowRoot.querySelector("#theme").checked = value
+            this._shadowRoot.getElementById("theme").checked = value
         }
 
         get enableRange() {
-            return this._shadowRoot.querySelector("#range").checked;
+            return this._shadowRoot.getElementById("range").checked;
         }
 
         set enableRange(value) {
-            this._shadowRoot.querySelector("#range").checked = value
+            this._shadowRoot.getElementById("range").checked = value
         }
 
         get minDate() {
