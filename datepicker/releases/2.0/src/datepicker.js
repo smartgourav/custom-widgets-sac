@@ -23,7 +23,7 @@
                     this.dispatchEvent(new Event("onChange"));
                 }.bind(this)
             }).addStyleClass("datePicker");
-            /*if (this._format) {
+            if (this._format) {
                 this.DP.setDisplayFormat(this._format);
             }
             if (this._minDate) {
@@ -31,8 +31,8 @@
             }
             if (this._maxDate) {
                 this.updateMaxDate();
-            }*/
-            this.DP.placeAt(this._shadowRoot);
+            }
+            this.DP.placeAt(this);
         }
 
         /*onCustomWidgetAfterUpdate(changedProperties) {
