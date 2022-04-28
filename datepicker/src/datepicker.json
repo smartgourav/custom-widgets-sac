@@ -7,19 +7,19 @@
 	"license": "",
 	"id": "sap.datepicker",
 	"version": "1.0.0",
-	"icon": "https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/calendar.svg",
+	"icon": "https://smartgourav.github.io/custom-widgets-sac/datepicker/src/calendar.svg",
 	"webcomponents": [
 		{
 			"kind": "main",
 			"tag": "sap-date-picker",
-			"url": "https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/datepicker.js",
+			"url": "https://smartgourav.github.io/custom-widgets-sac/datepicker/src/datepicker.js",
 			"integrity": "",
             "ignoreIntegrity": true
 		},
 		{
 			"kind": "styling",
 			"tag": "sap-date-picker-styling",
-			"url": "https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/datepicker_styling.js",
+			"url": "https://smartgourav.github.io/custom-widgets-sac/datepicker/src/datepicker_styling.js",
 			"integrity": "",
             "ignoreIntegrity": true
 		}
@@ -36,7 +36,7 @@
 		"format": {
 			"type": "string",
 			"description": "Date format",
-			"default": "yyyy-MM-dd"
+			"default": "YYYY-MM-dd"
 		},
 		"width": {
 			"type": "integer",
