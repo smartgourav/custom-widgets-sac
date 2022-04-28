@@ -10,8 +10,8 @@
         }
 
         init() {
-            let shadowRoot = this.attachShadow({ mode: "open" });
-            shadowRoot.appendChild(template.content.cloneNode(true));
+            this._shadowRoot = this.attachShadow({ mode: "open" });
+            this._shadowRoot.appendChild(template.content.cloneNode(true));
 
             var ctor = sap.m.DatePicker;
             if (this._enableRange) { ctor = sap.m.DateRangeSelection; }
@@ -87,7 +87,7 @@
         }
 
         set darkTheme(value) {
-            this.querySelector("link").setAttribute("href", `https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/${value ? "dark.css" : "light.css"}`
+            this._shadowRoot.querySelector("link").setAttribute("href", `https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/${value ? "dark.css" : "light.css"}`
             );
         }
 
