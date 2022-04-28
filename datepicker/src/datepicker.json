@@ -1,0 +1,155 @@
+{
+	"name": "Datepicker",
+	"description": "Custom Date control for SAP Analytics Cloud.",
+	"newInstancePrefix": "Datepicker",
+	"eula": "",
+	"vendor": "SAP",
+	"license": "",
+	"id": "sap.datepicker",
+	"version": "1.0.0",
+	"icon": "https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/calendar.svg",
+	"webcomponents": [
+		{
+			"kind": "main",
+			"tag": "sap-date-picker",
+			"url": "https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/datepicker.js",
+			"integrity": "",
+            "ignoreIntegrity": true
+		},
+		{
+			"kind": "styling",
+			"tag": "sap-date-picker-styling",
+			"url": "https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/datepicker_styling.js",
+			"integrity": "",
+            "ignoreIntegrity": true
+		}
+	],
+	"properties": {
+		"firstDate": {
+			"type": "Date",
+			"description": "Start date"
+		},
+		"secondDate": {
+			"type": "Date",
+			"description": "End date"
+		},
+		"format": {
+			"type": "string",
+			"description": "Date format",
+			"default": "yyyy-MM-dd"
+		},
+		"width": {
+			"type": "integer",
+			"default": 200
+		},
+		"height": {
+			"type": "integer",
+			"default": 48
+		},
+		"darkTheme": {
+			"type": "boolean",
+			"default": false
+		},
+		"enableRange": {
+			"type": "boolean",
+			"default": false
+		},
+		"minDate": {
+			"type": "Date",
+			"description": "The minimum Date that can be selected. (optional)"
+		},
+		"maxDate": {
+			"type": "Date",
+			"description": "The maximum Date that can be selected. (optional)"
+		}
+	},
+	"methods": {
+		"getFirstDate": {
+			"returnType": "Date",
+			"description": "get the date. (start date if range selection is enabled)",
+			"parameters": [],
+			"body": "return this.firstDate;"
+		},
+		"setFirstDate": {
+			"description": "set the date. (start date if range selection is enabled)",
+			"parameters": [
+				{
+					"name": "dv",
+					"type": "Date",
+					"description": "The new date"
+				}
+			],
+			"body": "this.firstDate = dv;"
+		},
+		"getSecondDate": {
+			"returnType": "Date",
+			"description": "get the end date. (returns undefined if range selection is not enabled)",
+			"parameters": [],
+			"body": " var x = new Date(); x = undefined; if (this.enableRange) { return this.secondDate; } else { return x; }"
+		},
+		"setSecondDate": {
+			"description": "set the end date. (has no effect if range selection is not enabled)",
+			"parameters": [
+				{
+					"name": "dv",
+					"type": "Date",
+					"description": "The new date"
+				}
+			],
+			"body": "this.secondDate = dv;"
+		},
+		"isRangeEnabled": {
+			"description": "Returns whether range selection is enabled",
+			"parameters": [],
+			"body": "return this.enableRange;",
+			"returnType": "boolean"
+		},
+		"getMinimumDate": {
+			"returnType": "Date",
+			"description": "get the date minimum. (might return undefined if value is not set)",
+			"parameters": [],
+			"body": "return this.minDate || undefined;"
+		},
+		"setMinimumDate": {
+			"description": "set the date minimum.",
+			"parameters": [
+				{
+					"name": "dv",
+					"type": "Date",
+					"description": "The new minimum date"
+				}
+			],
+			"body": "this.minDate = dv;"
+		},
+		"clearMinimumDate": {
+			"description": "clear the date minimum.",
+			"body": "this.minDate = undefined;"
+		},
+		"getMaximumDate": {
+			"returnType": "Date",
+			"description": "get the date maximum. (might return undefined if value is not set)",
+			"parameters": [],
+			"body": "return this.maxDate || undefined;"
+		},
+		"setMaximumDate": {
+			"description": "set the date maximum.",
+			"parameters": [
+				{
+					"name": "dv",
+					"type": "Date",
+					"description": "The new minimum date"
+				}
+			],
+			"body": "this.maxDate = dv;"
+		},
+		"clearMaximumDate": {
+			"description": "clear the date maximum.",
+			"body": "this.maxDate = undefined;"
+		}
+	},
+	"events": {
+		"onChange": {
+			"description": "Called when the user changes the selected date."
+		}
+	}
+}
