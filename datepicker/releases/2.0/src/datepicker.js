@@ -1,7 +1,7 @@
 (function () {
-    let version = "1.0.0";
-    let tmpl = document.createElement('template');
-    tmpl.innerHTML = `<link rel="stylesheet" type="text/css" href="https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/light.css"/>`;
+    let version = "2.0.0";
+    let template = document.createElement('template');
+    template.innerHTML = `<link rel="stylesheet" type="text/css" href="https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/light.css"/>`;
 
     class DatePicker extends HTMLElement {
         constructor() {
@@ -9,20 +9,19 @@
             this.init();
         }
 
-        init(skipChildrenCheck) {
-            if (skipChildrenCheck !== true && this.children.length === 2) return; //constructor called during drag+drop
-            if (!this.querySelector("link")) {
-                this.appendChild(tmpl.content.cloneNode(true));
-            }
+        init() {
+            let shadowRoot = this.attachShadow({ mode: "open" });
+            shadowRoot.appendChild(template.content.cloneNode(true));
+
             var ctor = sap.m.DatePicker;
             if (this._enableRange) { ctor = sap.m.DateRangeSelection; }
             this.DP = new ctor({
                 change: function () {
-                    this.fireChanged();
+                   // this.fireChanged();
                     this.dispatchEvent(new Event("onChange"));
                 }.bind(this)
             }).addStyleClass("datePicker");
-            if (this._format) {
+            /*if (this._format) {
                 this.DP.setDisplayFormat(this._format);
             }
             if (this._minDate) {
@@ -30,9 +29,34 @@
             }
             if (this._maxDate) {
                 this.updateMaxDate();
-            }
+            }*/
             this.DP.placeAt(this);
         }
+
+        onCustomWidgetAfterUpdate(changedProperties) {
+            if ("firstDate" in changedProperties) {
+                this.firstDate(changedProperties["firstDate"])
+            }
+            if ("secondDate" in changedProperties) {
+                this.secondDate(changedProperties["secondDate"])
+            }
+            if ("format" in changedProperties) {
+                this.format(changedProperties["format"])
+            }
+            if ("darkTheme" in changedProperties) {
+                this.darktheme(changedProperties["darkTheme"])
+            }
+            if ("enableRange" in changedProperties) {
+                this.enableRange(changedProperties["enableRange"])
+            }
+            if ("minDate" in changedProperties) {
+                this.minDate(changedProperties["minDate"])
+            }
+            if ("maxDate" in changedProperties) {
+                this.maxDate(changedProperties["maxDate"])
+            }
+        }
+
 
         fireChanged() {
             var properties = { firstDateVal: this.DP.getDateValue() };
@@ -62,7 +86,7 @@
             this.DP.setDisplayFormat(value);
         }
 
-        set darktheme(value) {
+        set darkTheme(value) {
             this.querySelector("link").setAttribute("href", `https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/${value ? "dark.css" : "light.css"}`
             );
         }

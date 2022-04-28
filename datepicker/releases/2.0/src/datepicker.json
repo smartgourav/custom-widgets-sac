@@ -6,20 +6,20 @@
 	"vendor": "SAP",
 	"license": "",
 	"id": "sap.datepicker",
-	"version": "1.0.0",
-	"icon": "https://smartgourav.github.io/custom-widgets-sac/datepicker/src/calendar.svg",
+	"version": "2.0.0",
+	"icon": "https://smartgourav.github.io/custom-widgets-sac/datepicker/releases/2.0/src/calendar.svg",
 	"webcomponents": [
 		{
 			"kind": "main",
 			"tag": "sap-date-picker",
-			"url": "https://smartgourav.github.io/custom-widgets-sac/datepicker/src/datepicker.js",
+			"url": "https://smartgourav.github.io/custom-widgets-sac/datepicker/releases/2.0/src/datepicker.js",
 			"integrity": "",
             "ignoreIntegrity": true
 		},
 		{
 			"kind": "styling",
 			"tag": "sap-date-picker-styling",
-			"url": "https://smartgourav.github.io/custom-widgets-sac/datepicker/src/datepicker_styling.js",
+			"url": "https://smartgourav.github.io/custom-widgets-sac/datepicker/releases/2.0/src/datepicker_styling.js",
 			"integrity": "",
             "ignoreIntegrity": true
 		}
@@ -64,12 +64,6 @@
 		}
 	},
 	"methods": {
-		"getFirstDate": {
-			"returnType": "Date",
-			"description": "get the date. (start date if range selection is enabled)",
-			"parameters": [],
-			"body": "return this.firstDate;"
-		},
 		"setFirstDate": {
 			"description": "set the date. (start date if range selection is enabled)",
 			"parameters": [
@@ -81,11 +75,11 @@
 			],
 			"body": "this.firstDate = dv;"
 		},
-		"getSecondDate": {
+		"getFirstDate": {
 			"returnType": "Date",
-			"description": "get the end date. (returns undefined if range selection is not enabled)",
+			"description": "get the date. (start date if range selection is enabled)",
 			"parameters": [],
-			"body": " var x = new Date(); x = undefined; if (this.enableRange) { return this.secondDate; } else { return x; }"
+			"body": "return this.firstDate;"
 		},
 		"setSecondDate": {
 			"description": "set the end date. (has no effect if range selection is not enabled)",
@@ -97,6 +91,12 @@
 				}
 			],
 			"body": "this.secondDate = dv;"
+		},
+		"getSecondDate": {
+			"returnType": "Date",
+			"description": "get the end date. (returns undefined if range selection is not enabled)",
+			"parameters": [],
+			"body": " var x = new Date(); x = undefined; if (this.enableRange) { return this.secondDate; } else { return x; }"
 		},
 		"isRangeEnabled": {
 			"description": "Returns whether range selection is enabled",

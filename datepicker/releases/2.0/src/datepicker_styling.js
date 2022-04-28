@@ -1,7 +1,7 @@
 (function () {
-    let version = "1.0.0";
-    let tmpl = document.createElement('template');
-    tmpl.innerHTML = `
+    let version = "2.0.0";
+    let template = document.createElement('template');
+    template.innerHTML = `
         <p>Date Format</p>
         <div class="select">
             <select id="select">
@@ -22,7 +22,8 @@
     class DatePickerAps extends HTMLElement {
         constructor() {
             super();
-            this.appendChild(tmpl.content.cloneNode(true));
+            this._shadowRoot = this.attachShadow({ mode: "open" });
+            this._shadowRoot.appendChild(template.content.cloneNode(true));
 
             if (sap.ui.getCore().byId("dateMin")) {
                 sap.ui.getCore().byId("dateMin").destroy();
@@ -34,7 +35,7 @@
                     this._submit(event);
                 }.bind(this)
             });
-            this.minDP.placeAt(this.querySelector("#dateMin"));
+            this.minDP.placeAt(this._shadowRoot.querySelector("#dateMin"));
 
             if (sap.ui.getCore().byId("dateMax")) {
                 sap.ui.getCore().byId("dateMax").destroy();
@@ -46,9 +47,9 @@
                     this._submit(event);
                 }.bind(this)
             });
-            this.maxDP.placeAt(this.querySelector("#dateMax"));
+            this.maxDP.placeAt(this._shadowRoot.querySelector("#dateMax"));
             ["select", "theme", "range"].forEach(id =>
-                this.querySelector("#" + id).addEventListener("change", this._submit.bind(this)));
+                this._shadowRoot.querySelector("#" + id).addEventListener("change", this._submit.bind(this)));
         }
 
         _submit(e) {
@@ -68,27 +69,27 @@
         }
 
         get format() {
-            return this.querySelector("option[name='date_format']:checked").value;
+            return this._shadowRoot.querySelector("option[name='date_format']:checked").value;
         }
 
         set format(value) {
-            this.querySelector("option[name='date_format'][value='" + value + "']").checked = "checked";
+            this._shadowRoot.querySelector("option[name='date_format'][value='" + value + "']").checked = "checked";
         }
 
         get darkTheme() {
-            return this.querySelector("#theme").checked;
+            return this._shadowRoot.querySelector("#theme").checked;
         }
 
         set darkTheme(value) {
-            this.querySelector("#theme").checked = value
+            this._shadowRoot.querySelector("#theme").checked = value
         }
 
         get enableRange() {
-            return this.querySelector("#range").checked;
+            return this._shadowRoot.querySelector("#range").checked;
         }
 
         set enableRange(value) {
-            this.querySelector("#range").checked = value
+            this._shadowRoot.querySelector("#range").checked = value
         }
 
         get minDate() {
