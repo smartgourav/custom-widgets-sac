@@ -5,7 +5,6 @@
         <p>Date Format</p>
         <div class="select">
             <select id="select">
-                <option name="date_format" value="">Automatic</option>
                 <option name="date_format" value="YYYY-MM-dd">YYYY-MM-DD</option>
                 <option name="date_format" value="MM/dd/YYYY">MM/DD/YYYY</option>
                 <option name="date_format" value="dd.MM.YYYY">DD.MM.YYYY</option>
@@ -58,10 +57,10 @@
                 detail: {
                     properties: {
                         format: this.format,
-                        darktheme: this.darktheme,
-                        enablerange: this.enablerange,
-                        minDateVal: this.minDateVal,
-                        maxDateVal: this.maxDateVal
+                        darkTheme: this.darkTheme,
+                        enableRange: this.enableRange,
+                        minDate: this.minDate,
+                        maxDate: this.maxDate
                     }
                 }
             }));
