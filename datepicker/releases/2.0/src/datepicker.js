@@ -17,7 +17,7 @@
             if (this._enableRange) { ctor = sap.m.DateRangeSelection; }
             this.DP = new ctor({
                 change: function () {
-                   // this.fireChanged();
+                    this.fireChanged();
                     this.dispatchEvent(new Event("onChange"));
                 }.bind(this)
             }).addStyleClass("datePicker");
@@ -33,7 +33,7 @@
             this.DP.placeAt(this);
         }
 
-        onCustomWidgetAfterUpdate(changedProperties) {
+        /*onCustomWidgetAfterUpdate(changedProperties) {
             if ("firstDate" in changedProperties) {
                 this.firstDate(changedProperties["firstDate"])
             }
@@ -55,12 +55,12 @@
             if ("maxDate" in changedProperties) {
                 this.maxDate(changedProperties["maxDate"])
             }
-        }
+        }*/
 
 
         fireChanged() {
-            var properties = { firstDateVal: this.DP.getDateValue() };
-            if (this._enableRange) { properties.secondDateVal = this.DP.getSecondDateValue(); }
+            var properties = { firstDate: this.DP.getDateValue() };
+            if (this._enableRange) { properties.secondDate = this.DP.getSecondDateValue(); }
             this.dispatchEvent(new CustomEvent("propertiesChanged", {
                 detail: {
                     properties: properties
@@ -95,7 +95,15 @@
             if (value == undefined || !this.DP) return;
             this._enableRange = value;
             this.DP.destroy();
-            this.init(true);
+            if (this._enableRange) {
+                var ctor = sap.m.DateRangeSelection;
+                this.DP = new ctor({
+                    change: function () {
+                        this.fireChanged();
+                        this.dispatchEvent(new Event("onChange"));
+                    }.bind(this)
+                })
+            }
         }
 
         set minDate(date) {
