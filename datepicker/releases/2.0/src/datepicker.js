@@ -1,6 +1,7 @@
 (function () {
     let version = "2.0.0";
     let template = document.createElement('template');
+    template.id = "date-id"
     template.innerHTML = `<link rel="stylesheet" type="text/css" href="https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/light.css"/>`;
 
     class DatePicker extends HTMLElement {
@@ -32,7 +33,7 @@
             if (this._maxDate) {
                 this.updateMaxDate();
             }
-            this.DP.placeAt(this._shadowRoot);
+            this.DP.placeAt(template);
         }
 
         /*onCustomWidgetAfterUpdate(changedProperties) {

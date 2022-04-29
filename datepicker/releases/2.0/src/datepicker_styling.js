@@ -1,6 +1,7 @@
 (function () {
     let version = "2.0.0";
     let template = document.createElement('template');
+    template.id = "date-style-id"
     template.innerHTML = `
         <p>Date Format</p>
         <div class="select">
@@ -35,7 +36,7 @@
                     this._submit(event);
                 }.bind(this)
             });
-            this.minDP.placeAt(this._shadowRoot.getElementById("dateMin"));
+            this.minDP.placeAt(template.getElementById("dateMin"));
 
             if (sap.ui.getCore().byId("dateMax")) {
                 sap.ui.getCore().byId("dateMax").destroy();
