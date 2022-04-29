@@ -25,10 +25,10 @@
             super();
             this._shadowRoot = this.attachShadow({ mode: "open" });
             this._shadowRoot.appendChild(template.content.cloneNode(true));
-            var sp = document.createElement("span")
+            var sp = document.createElement("div")
             sp.id = "date-id"
             this._shadowRoot.appendChild(sp)
-            
+
             if (sap.ui.getCore().byId("dateMin")) {
                 sap.ui.getCore().byId("dateMin").destroy();
             }
