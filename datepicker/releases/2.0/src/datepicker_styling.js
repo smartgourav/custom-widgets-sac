@@ -25,7 +25,10 @@
             super();
             this._shadowRoot = this.attachShadow({ mode: "open" });
             this._shadowRoot.appendChild(template.content.cloneNode(true));
-
+            var sp = document.createElement("span")
+            sp.id = "date-id"
+            this._shadowRoot.appendChild(sp)
+            
             if (sap.ui.getCore().byId("dateMin")) {
                 sap.ui.getCore().byId("dateMin").destroy();
             }
@@ -36,7 +39,7 @@
                     this._submit(event);
                 }.bind(this)
             });
-            this.minDP.placeAt(template.getElementById("dateMin"));
+            this.minDP.placeAt(this._shadowRoot.getElementById("dateMin"));
 
             if (sap.ui.getCore().byId("dateMax")) {
                 sap.ui.getCore().byId("dateMax").destroy();

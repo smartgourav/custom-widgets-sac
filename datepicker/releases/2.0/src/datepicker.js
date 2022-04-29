@@ -1,7 +1,6 @@
 (function () {
     let version = "2.0.0";
     let template = document.createElement('template');
-    template.id = "date-id"
     template.innerHTML = `<link rel="stylesheet" type="text/css" href="https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/light.css"/>`;
 
     class DatePicker extends HTMLElement {
@@ -14,6 +13,9 @@
             if (!fromRangeSelection) {
                 this._shadowRoot = this.attachShadow({ mode: "open" });
                 this._shadowRoot.appendChild(template.content.cloneNode(true));
+                var sp = document.createElement("span")
+                sp.id = "date-id"
+                this._shadowRoot.appendChild(sp)
             }
 
             var ctor = sap.m.DatePicker;
@@ -33,7 +35,7 @@
             if (this._maxDate) {
                 this.updateMaxDate();
             }
-            this.DP.placeAt(template);
+            this.DP.placeAt(this._shadowRoot.getElementById("date-id"));
         }
 
         /*onCustomWidgetAfterUpdate(changedProperties) {
