@@ -10,9 +10,11 @@
                 <option name="date_format" value="dd.MM.YYYY">DD.MM.YYYY</option>
             </select>
         </div>
-        <p>Theme</p>
-        <label class="checkbox"><input type="checkbox" id="theme" /><div class="checkmark" ></div>Use dark theme</label>
         <p>Miscellaneous</p>
+        <label for="font-color">Font Color</label>
+        <input type="text" id="font-color" name="font-color">
+        <label for="background-color">Background Color</label>
+        <input type="text" id="background-color" name="background-color">
         <label class="checkbox"><input type="checkbox" id="range" /><div class="checkmark" ></div>Enable date range selection</label>
         <p>Minimum Date Value</p>
         <div id="dateMin" ></div>
@@ -57,7 +59,6 @@
                 detail: {
                     properties: {
                         format: this.format,
-                        darkTheme: this.darkTheme,
                         enableRange: this.enableRange,
                         minDate: this.minDate,
                         maxDate: this.maxDate
@@ -73,14 +74,6 @@
 
         set format(value) {
             this.querySelector("option[name='date_format'][value='" + value + "']").checked = "checked";
-        }
-
-        get darkTheme() {
-            return this.querySelector("#theme").checked;
-        }
-
-        set darkTheme(value) {
-            this.querySelector("#theme").checked = value
         }
 
         get enableRange() {
