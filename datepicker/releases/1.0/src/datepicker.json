@@ -7,19 +7,19 @@
 	"license": "",
 	"id": "sap.datepicker",
 	"version": "1.0.0",
-	"icon": "https://smartgourav.github.io/custom-widgets-sac/datepicker/src/calendar.svg",
+	"icon": "https://smartgourav.github.io/custom-widgets-sac/datepicker/releases/1.0/src/calendar.svg",
 	"webcomponents": [
 		{
 			"kind": "main",
 			"tag": "sap-date-picker",
-			"url": "https://smartgourav.github.io/custom-widgets-sac/datepicker/src/datepicker.js",
+			"url": "https://smartgourav.github.io/custom-widgets-sac/datepicker/releases/1.0/src/datepicker.js",
 			"integrity": "",
             "ignoreIntegrity": true
 		},
 		{
 			"kind": "styling",
 			"tag": "sap-date-picker-styling",
-			"url": "https://smartgourav.github.io/custom-widgets-sac/datepicker/src/datepicker_styling.js",
+			"url": "https://smartgourav.github.io/custom-widgets-sac/datepicker/releases/1.0/src/datepicker_styling.js",
 			"integrity": "",
             "ignoreIntegrity": true
 		}

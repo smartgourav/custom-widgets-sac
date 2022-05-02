@@ -1,7 +1,7 @@
 (function () {
     let version = "1.0.0";
-    let tmpl = document.createElement('template');
-    tmpl.innerHTML = `<link rel="stylesheet" type="text/css" href="https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/light.css"/>`;
+    let template = document.createElement('template');
+    template.innerHTML = `<link rel="stylesheet" type="text/css" href="https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/releases/1.0/src/light.css"/>`;
 
     class DatePicker extends HTMLElement {
         constructor() {
@@ -12,7 +12,7 @@
         init(skipChildrenCheck) {
             if (skipChildrenCheck !== true && this.children.length === 2) return; //constructor called during drag+drop
             if (!this.querySelector("link")) {
-                this.appendChild(tmpl.content.cloneNode(true));
+                this.appendChild(template.content.cloneNode(true));
             }
             var ctor = sap.m.DatePicker;
             if (this._enableRange) { ctor = sap.m.DateRangeSelection; }
@@ -35,8 +35,8 @@
         }
 
         fireChanged() {
-            var properties = { firstDateVal: this.DP.getDateValue() };
-            if (this._enableRange) { properties.secondDateVal = this.DP.getSecondDateValue(); }
+            var properties = { firstDate: this.DP.getDateValue() };
+            if (this._enableRange) { properties.secondDate = this.DP.getSecondDateValue(); }
             this.dispatchEvent(new CustomEvent("propertiesChanged", {
                 detail: {
                     properties: properties
@@ -62,8 +62,8 @@
             this.DP.setDisplayFormat(value);
         }
 
-        set darktheme(value) {
-            this.querySelector("link").setAttribute("href", `https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/src/${value ? "dark.css" : "light.css"}`
+        set darkTheme(value) {
+            this.querySelector("link").setAttribute("href", `https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/releases/1.0/src/${value ? "dark.css" : "light.css"}`
             );
         }
 
