@@ -11,10 +11,10 @@
             </select>
         </div>
         <p>Miscellaneous</p>
-        <label for="font-color">Font Color</label>
-        <input type="text" id="font-color" name="font-color">
-        <label for="background-color">Background Color</label>
-        <input type="text" id="background-color" name="background-color">
+        <p>Font Color</p>
+        <div><input type="text" id="font-color" name="font-color"></div>
+        <p>Background Color</p>
+        <div><input type="text" id="background-color" name="background-color"></div>
         <label class="checkbox"><input type="checkbox" id="range" /><div class="checkmark" ></div>Enable date range selection</label>
         <p>Minimum Date Value</p>
         <div id="dateMin" ></div>
@@ -49,7 +49,8 @@
                 }.bind(this)
             });
             this.maxDP.placeAt(this.querySelector("#dateMax"));
-            ["select", "range"].forEach(id =>
+
+            ["select", "range", "font-color", "background-color"].forEach(id =>
                 this.querySelector("#" + id).addEventListener("change", this._submit.bind(this)));
         }
 
@@ -61,7 +62,9 @@
                         format: this.format,
                         enableRange: this.enableRange,
                         minDate: this.minDate,
-                        maxDate: this.maxDate
+                        maxDate: this.maxDate,
+                        fontColor: this.fontColor,
+                        backgroundColor: this.backgroundColor
                     }
                 }
             }));
@@ -82,6 +85,22 @@
 
         set enableRange(value) {
             this.querySelector("#range").checked = value
+        }
+
+        get fontColor() {
+            return this.querySelector("#font-color").value;
+        }
+
+        set fontColor(value) {
+            this.querySelector("#font-color").value = value
+        }
+
+        get backgroundColor() {
+            return this.querySelector("#background-color").value;
+        }
+
+        set backgroundColor(value) {
+            this.querySelector("#background-color").value = value
         }
 
         get minDate() {
