@@ -65,7 +65,7 @@
         }
 
         set enableRange(value) {
-            if (value == undefined || !this.DP) return;
+            if (value === undefined || value === false || !this.DP) return;
             this._enableRange = value;
             this.DP.destroy();
             this.init(true);
