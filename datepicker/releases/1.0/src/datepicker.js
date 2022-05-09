@@ -16,8 +16,8 @@
             }
 
             var uniqueId = Math.floor(Math.random() * Date.now())
-            var ctor = sap.m.DatePicker(uniqueId);
-            if (this._enableRange) { ctor = sap.m.DateRangeSelection(uniqueId); }
+            var ctor = new sap.m.DatePicker(uniqueId);
+            if (this._enableRange) { ctor = new sap.m.DateRangeSelection(uniqueId); }
             this.DP = new ctor({
                 change: function () {
                     this.fireChanged();
