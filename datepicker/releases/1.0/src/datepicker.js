@@ -87,14 +87,22 @@
             if (!this.DP) return;
 
             var id = this.DP.getId() + "-inner";
-            jQuery(id).css("color", fontColor);
+            if (sap.ui.getCore().byId(id)) {
+                sap.ui.getCore().byId(id).getDomRef().style.color = fontColor;
+            }
+
+            //jQuery(id).css({"color" : fontColor});
         }
 
         set backgroundColor(backgroundColor) {
             if (!this.DP) return;
 
             var id = this.DP.getId() + "-inner";
-            jQuery(id).css("background-color", backgroundColor);
+            if (sap.ui.getCore().byId(id)) {
+                sap.ui.getCore().byId(id).getDomRef().style.backgroundColor = backgroundColor;
+            }
+
+            //jQuery(id).css({"background-color" : backgroundColor});
         }
 
         updateMaxDate() {
