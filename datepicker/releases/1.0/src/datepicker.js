@@ -1,7 +1,7 @@
 (function () {
     let version = "1.0.0";
     let template = document.createElement('template');
-    template.innerHTML = `<link rel="stylesheet" type="text/css" href="https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/releases/1.0/src/light.css"/>`;
+    template.innerHTML = `<link rel="stylesheet" type="text/css" href="https://smartgourav.github.io/custom-widgets-sac/datepicker/releases/1.0/src/light.css"/>`;
 
     class DatePicker extends HTMLElement {
         constructor() {
