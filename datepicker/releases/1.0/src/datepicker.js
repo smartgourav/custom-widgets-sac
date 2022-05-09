@@ -14,8 +14,10 @@
             if (!this.querySelector("link")) {
                 this.appendChild(template.content.cloneNode(true));
             }
-            var ctor = sap.m.DatePicker;
-            if (this._enableRange) { ctor = sap.m.DateRangeSelection; }
+
+            var uniqueId = Math.floor(Math.random() * Date.now())
+            var ctor = sap.m.DatePicker(uniqueId);
+            if (this._enableRange) { ctor = sap.m.DateRangeSelection(uniqueId); }
             this.DP = new ctor({
                 change: function () {
                     this.fireChanged();
@@ -62,11 +64,6 @@
             this.DP.setDisplayFormat(value);
         }
 
-        set darkTheme(value) {
-            this.querySelector("link").setAttribute("href", `https://github.wdf.sap.corp/ariba-analytics/custom-widgets/blob/main/datepicker/releases/1.0/src/${value ? "dark.css" : "light.css"}`
-            );
-        }
-
         set enableRange(value) {
             if (value == undefined || !this.DP) return;
             this._enableRange = value;
@@ -84,6 +81,20 @@
             if (!this.DP) return;
             this._maxDate = date;
             this.updateMaxDate();
+        }
+
+        set fontColor(fontColor) {
+            if (!this.DP) return;
+
+            var id = this.DP.getId();
+            jQuery(id).css({"color" : fontColor});
+        }
+
+        set backgroundColor(backgroundColor) {
+            if (!this.DP) return;
+
+            var id = this.DP.getId();
+            jQuery(id).css({"background-color" : backgroundColor});
         }
 
         updateMaxDate() {
