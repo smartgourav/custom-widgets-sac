@@ -46,9 +46,15 @@
 			"type": "integer",
 			"default": 48
 		},
-		"darkTheme": {
-			"type": "boolean",
-			"default": false
+		"fontColor": {
+			"type": "string",
+			"description": "Font color",
+			"default": "black"
+		},
+		"backgroundColor": {
+			"type": "string",
+			"description": "Background color",
+			"default": "white"
 		},
 		"enableRange": {
 			"type": "boolean",
@@ -141,6 +147,40 @@
 				}
 			],
 			"body": "this.maxDate = dv;"
+		},
+		"getFontColor": {
+			"returnType": "string",
+			"description": "get the font color",
+			"parameters": [],
+			"body": "return this.fontColor || undefined;"
+		},
+		"setFontColor": {
+			"description": "set the font color.",
+			"parameters": [
+				{
+					"name": "color",
+					"type": "string",
+					"description": "The new font color"
+				}
+			],
+			"body": "this.fontColor = color;"
+		},
+		"getBackgroundColor": {
+			"returnType": "string",
+			"description": "get the background color",
+			"parameters": [],
+			"body": "return this.backgroundColor || undefined;"
+		},
+		"setBackgroundColor": {
+			"description": "set the background color.",
+			"parameters": [
+				{
+					"name": "bcolor",
+					"type": "string",
+					"description": "The new background color"
+				}
+			],
+			"body": "this.backgroundColor = bcolor;"
 		},
 		"clearMaximumDate": {
 			"description": "clear the date maximum.",
