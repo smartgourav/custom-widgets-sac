@@ -33,6 +33,18 @@
             if (this._maxDate) {
                 this.updateMaxDate();
             }
+            if (this._fontColor) {
+                var id = "#" + this.DP.getId() + "-inner";
+                if (this.querySelector(id)) {
+                    this.querySelector(id).style.color = fontColor;
+                }
+            }
+            if (this._backgroundColor) {
+                var id = "#" + this.DP.getId() + "-inner";
+            if (this.querySelector(id)) {
+                this.querySelector(id).style.backgroundColor = backgroundColor;
+            }
+            }
             this.DP.placeAt(this);
         }
 
