@@ -10,7 +10,7 @@
         }
 
         init(skipChildrenCheck) {
-            if (skipChildrenCheck !== true) return; //constructor called during drag+drop
+            if (skipChildrenCheck !== true && this.children.length === 2) return; //constructor called during drag+drop
             if (!this.querySelector("link")) {
                 this.appendChild(template.content.cloneNode(true));
             }
