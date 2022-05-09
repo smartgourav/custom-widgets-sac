@@ -86,7 +86,7 @@
         set fontColor(fontColor) {
             if (!this.DP) return;
 
-            var id = this.DP.getId() + "-inner";
+            var id = "#" + this.DP.getId() + "-inner";
             if (this.querySelector(id)) {
                 this.querySelector(id).style.color = fontColor;
             }
@@ -97,7 +97,7 @@
         set backgroundColor(backgroundColor) {
             if (!this.DP) return;
 
-            var id = this.DP.getId() + "-inner";
+            var id = "#" + this.DP.getId() + "-inner";
             if (this.querySelector(id)) {
                 this.querySelector(id).style.backgroundColor = backgroundColor;
             }
