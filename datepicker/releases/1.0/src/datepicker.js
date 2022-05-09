@@ -87,14 +87,14 @@
             if (!this.DP) return;
 
             var id = this.DP.getId() + "-inner";
-            jQuery(id).css({"color" : fontColor});
+            jQuery(id).css("color", fontColor);
         }
 
         set backgroundColor(backgroundColor) {
             if (!this.DP) return;
 
             var id = this.DP.getId() + "-inner";
-            jQuery(id).css({"background-color" : backgroundColor});
+            jQuery(id).css("background-color", backgroundColor);
         }
 
         updateMaxDate() {
