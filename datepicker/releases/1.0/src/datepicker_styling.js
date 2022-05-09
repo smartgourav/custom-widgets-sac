@@ -49,7 +49,7 @@
                 }.bind(this)
             });
             this.maxDP.placeAt(this.querySelector("#dateMax"));
-            ["select", "theme", "range"].forEach(id =>
+            ["select", "range"].forEach(id =>
                 this.querySelector("#" + id).addEventListener("change", this._submit.bind(this)));
         }
 
