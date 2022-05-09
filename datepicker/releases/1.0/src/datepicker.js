@@ -87,8 +87,8 @@
             if (!this.DP) return;
 
             var id = this.DP.getId() + "-inner";
-            if (sap.ui.getCore().byId(id)) {
-                sap.ui.getCore().byId(id).getDomRef().style.color = fontColor;
+            if (this.querySelector(id)) {
+                this.querySelector(id).style.color = fontColor;
             }
 
             //jQuery(id).css({"color" : fontColor});
@@ -98,8 +98,8 @@
             if (!this.DP) return;
 
             var id = this.DP.getId() + "-inner";
-            if (sap.ui.getCore().byId(id)) {
-                sap.ui.getCore().byId(id).getDomRef().style.backgroundColor = backgroundColor;
+            if (this.querySelector(id)) {
+                this.querySelector(id).style.backgroundColor = backgroundColor;
             }
 
             //jQuery(id).css({"background-color" : backgroundColor});
