@@ -106,9 +106,9 @@
 
             var style = document.createElement('style');
             style.type = 'text/css';
-            style.innerHTML = `.${this.sId} input[type="text"] { color: ${fontColor}; }`;
+            style.innerHTML = `.${this.sId}-color input[type="text"] { color: ${fontColor}; }`;
             document.getElementsByTagName('head')[0].appendChild(style);
-            this.DP.addStyleClass(this.sId);
+            this.DP.addStyleClass(`${this.sId}-color`);
             /*var id = "#" + this.DP.getId() + "-inner";
             if (this.querySelector(id)) {
                 this.querySelector(id).style.color = fontColor;
@@ -124,10 +124,16 @@
 
             this._backgroundColor = backgroundColor;
 
-            var id = "#" + this.DP.getId() + "-inner";
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `.${this.sId}-backgroundColor input[type="text"] { background-color: ${backgroundColor}; }`;
+            document.getElementsByTagName('head')[0].appendChild(style);
+            this.DP.addStyleClass(`${this.sId}-backgroundColor`);
+
+            /*var id = "#" + this.DP.getId() + "-inner";
             if (this.querySelector(id)) {
                 this.querySelector(id).style.backgroundColor = backgroundColor;
-            }
+            }*/
 
             //jQuery(id).css({"background-color" : backgroundColor});
         }
