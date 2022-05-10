@@ -106,7 +106,7 @@
 
             var style = document.createElement('style');
             style.type = 'text/css';
-            style.innerHTML = `.${this.sId}-color input[type="text"] { color: ${fontColor}; }`;
+            style.innerHTML = `.${this.sId}-color input[type="text"] { color: ${fontColor}; } .${this.sId}-color span { color: ${fontColor}; }`;
             document.getElementsByTagName('head')[0].appendChild(style);
             this.DP.addStyleClass(`${this.sId}-color`);
             /*var id = "#" + this.DP.getId() + "-inner";
@@ -126,7 +126,7 @@
 
             var style = document.createElement('style');
             style.type = 'text/css';
-            style.innerHTML = `.${this.sId}-backgroundColor input[type="text"] { background-color: ${backgroundColor}; }`;
+            style.innerHTML = `.${this.sId}-backgroundColor input[type="text"] { background-color: ${backgroundColor}; } .${this.sId}-backgroundColor span { background-color: ${backgroundColor}; }`;
             document.getElementsByTagName('head')[0].appendChild(style);
             this.DP.addStyleClass(`${this.sId}-backgroundColor`);
 
