@@ -106,7 +106,7 @@
 
             var style = document.createElement('style');
             style.type = 'text/css';
-            style.innerHTML = `.${this.sId} { color: ${fontColor}; }`;
+            style.innerHTML = `.${this.sId} input[type="text"] { color: ${fontColor}; }`;
             document.getElementsByTagName('head')[0].appendChild(style);
             this.DP.addStyleClass(this.sId);
             /*var id = "#" + this.DP.getId() + "-inner";
