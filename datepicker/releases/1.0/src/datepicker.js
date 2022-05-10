@@ -24,6 +24,8 @@
                     this.dispatchEvent(new Event("onChange"));
                 }.bind(this)
             }).addStyleClass("datePicker");
+
+            this.sId = this.DP.sId;
             if (this._format) {
                 this.DP.setDisplayFormat(this._format);
             }
@@ -33,6 +35,9 @@
             if (this._maxDate) {
                 this.updateMaxDate();
             }
+            
+            this.DP.placeAt(this);
+
             if (this._fontColor) {
                 var id = "#" + this.DP.getId() + "-inner";
                 if (this.querySelector(id)) {
@@ -41,11 +46,10 @@
             }
             if (this._backgroundColor) {
                 var id = "#" + this.DP.getId() + "-inner";
-            if (this.querySelector(id)) {
-                this.querySelector(id).style.backgroundColor = backgroundColor;
+                if (this.querySelector(id)) {
+                    this.querySelector(id).style.backgroundColor = backgroundColor;
+                }
             }
-            }
-            this.DP.placeAt(this);
         }
 
         fireChanged() {
@@ -98,6 +102,8 @@
         set fontColor(fontColor) {
             if (!this.DP) return;
 
+            this._fontColor = fontColor;
+
             var id = "#" + this.DP.getId() + "-inner";
             if (this.querySelector(id)) {
                 this.querySelector(id).style.color = fontColor;
@@ -109,6 +115,8 @@
         set backgroundColor(backgroundColor) {
             if (!this.DP) return;
 
+            this._backgroundColor = backgroundColor;
+            
             var id = "#" + this.DP.getId() + "-inner";
             if (this.querySelector(id)) {
                 this.querySelector(id).style.backgroundColor = backgroundColor;
