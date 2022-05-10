@@ -7,7 +7,10 @@
             <select id="select">
                 <option name="date_format" value="YYYY-MM-dd">YYYY-MM-DD</option>
                 <option name="date_format" value="MM/dd/YYYY">MM/DD/YYYY</option>
+                <option name="date_format" value="MM-dd-YYYY">MM-DD-YYYY</option>
                 <option name="date_format" value="dd.MM.YYYY">DD.MM.YYYY</option>
+                <option name="date_format" value="dd-MM-YYYY">DD-MM-YYYY</option>
+                <option name="date_format" value="dd/MM/YYYY">DD/MM/YYYY</option>
             </select>
         </div>
         <p>Miscellaneous</p>
@@ -16,9 +19,9 @@
         <p>Background Color</p>
         <div><input type="text" id="background-color" name="background-color"></div>
         <label class="checkbox"><input type="checkbox" id="range" /><div class="checkmark" ></div>Enable date range selection</label>
-        <p>Minimum Date Value</p>
+        <p>Minimum Date</p>
         <div id="dateMin" ></div>
-        <p>Maximum Date Value</p>
+        <p>Maximum Date</p>
         <div id="dateMax" ></div>`;
 
     class DatePickerAps extends HTMLElement {

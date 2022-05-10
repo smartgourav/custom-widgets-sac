@@ -15,10 +15,10 @@
                 this.appendChild(template.content.cloneNode(true));
             }
 
-            var uniqueId = Math.floor(Math.random() * Date.now())
+            //var uniqueId = Math.floor(Math.random() * Date.now())
             var ctor = sap.m.DatePicker;
             if (this._enableRange) { ctor = sap.m.DateRangeSelection; }
-            this.DP = new ctor(uniqueId, {
+            this.DP = new ctor({
                 change: function () {
                     this.fireChanged();
                     this.dispatchEvent(new Event("onChange"));
@@ -36,20 +36,14 @@
                 this.updateMaxDate();
             }
 
-            this.DP.placeAt(this);
-
             if (this._fontColor) {
-                var id = "#" + this.DP.getId() + "-inner";
-                if (this.querySelector(id)) {
-                    this.querySelector(id).style.color = fontColor;
-                }
+                this.addFontColor(this._fontColor);
             }
             if (this._backgroundColor) {
-                var id = "#" + this.DP.getId() + "-inner";
-                if (this.querySelector(id)) {
-                    this.querySelector(id).style.backgroundColor = backgroundColor;
-                }
+                this.addBackgroundColor(this._backgroundColor);
             }
+
+            this.DP.placeAt(this);
         }
 
         fireChanged() {
@@ -100,15 +94,7 @@
         }
 
         set fontColor(fontColor) {
-            if (!this.DP) return;
-
-            this._fontColor = fontColor;
-
-            var style = document.createElement('style');
-            style.type = 'text/css';
-            style.innerHTML = `.${this.sId}-color input[type="text"] { color: ${fontColor}; } .${this.sId}-color span { color: ${fontColor}; }`;
-            document.getElementsByTagName('head')[0].appendChild(style);
-            this.DP.addStyleClass(`${this.sId}-color`);
+            this.addFontColor(fontColor);
             /*var id = "#" + this.DP.getId() + "-inner";
             if (this.querySelector(id)) {
                 this.querySelector(id).style.color = fontColor;
@@ -119,7 +105,30 @@
             //jQuery(id).css({"color" : fontColor});
         }
 
+        addFontColor(fontColor) {
+            if (!this.DP) return;
+
+            this._fontColor = fontColor;
+
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `.${this.sId}-color input[type="text"] { color: ${fontColor}; } .${this.sId}-color span { color: ${fontColor}; }`;
+            document.getElementsByTagName('head')[0].appendChild(style);
+            this.DP.addStyleClass(`${this.sId}-color`);
+        }
+
         set backgroundColor(backgroundColor) {
+            this.addBackgroundColor(backgroundColor);
+
+            /*var id = "#" + this.DP.getId() + "-inner";
+            if (this.querySelector(id)) {
+                this.querySelector(id).style.backgroundColor = backgroundColor;
+            }*/
+
+            //jQuery(id).css({"background-color" : backgroundColor});
+        }
+
+        addBackgroundColor(backgroundColor) {
             if (!this.DP) return;
 
             this._backgroundColor = backgroundColor;
@@ -129,13 +138,6 @@
             style.innerHTML = `.${this.sId}-backgroundColor input[type="text"] { background-color: ${backgroundColor}; } .${this.sId}-backgroundColor span { background-color: ${backgroundColor}; }`;
             document.getElementsByTagName('head')[0].appendChild(style);
             this.DP.addStyleClass(`${this.sId}-backgroundColor`);
-
-            /*var id = "#" + this.DP.getId() + "-inner";
-            if (this.querySelector(id)) {
-                this.querySelector(id).style.backgroundColor = backgroundColor;
-            }*/
-
-            //jQuery(id).css({"background-color" : backgroundColor});
         }
 
         updateMaxDate() {
