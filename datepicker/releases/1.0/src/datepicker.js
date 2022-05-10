@@ -23,7 +23,7 @@
                     this.fireChanged();
                     this.dispatchEvent(new Event("onChange"));
                 }.bind(this)
-            }).addStyleClass("datePicker");
+            })//.addStyleClass("datePicker");
 
             this.sId = this.DP.sId;
             if (this._format) {
@@ -35,7 +35,7 @@
             if (this._maxDate) {
                 this.updateMaxDate();
             }
-            
+
             this.DP.placeAt(this);
 
             if (this._fontColor) {
@@ -104,10 +104,17 @@
 
             this._fontColor = fontColor;
 
-            var id = "#" + this.DP.getId() + "-inner";
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `.${this.sId} { color: ${fontColor}; }`;
+            document.getElementsByTagName('head')[0].appendChild(style);
+            this.DP.addStyleClass(this.sId);
+            /*var id = "#" + this.DP.getId() + "-inner";
             if (this.querySelector(id)) {
                 this.querySelector(id).style.color = fontColor;
-            }
+            }*/
+
+
 
             //jQuery(id).css({"color" : fontColor});
         }
@@ -116,7 +123,7 @@
             if (!this.DP) return;
 
             this._backgroundColor = backgroundColor;
-            
+
             var id = "#" + this.DP.getId() + "-inner";
             if (this.querySelector(id)) {
                 this.querySelector(id).style.backgroundColor = backgroundColor;
